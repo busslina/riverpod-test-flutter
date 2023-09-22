@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+// Links
+//
+// - https://docs-v2.riverpod.dev/docs/introduction/getting_started
+
 void main() {
   runApp(const MainApp());
 }
