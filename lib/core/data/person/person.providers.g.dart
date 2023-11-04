@@ -22,7 +22,7 @@ final personSetProvider = NotifierProvider<PersonSet, ISet<String>>.internal(
 );
 
 typedef _$PersonSet = Notifier<ISet<String>>;
-String _$personFamHash() => r'394538850ccb0f5ec1e2b3238641b24fabee0fe9';
+String _$personFamHash() => r'136435ba53cb9abcb11a197787ab65bd62eef8f1';
 
 /// Copied from Dart SDK
 class _SystemHash {

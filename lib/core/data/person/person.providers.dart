@@ -43,12 +43,14 @@ class PersonFam extends _$PersonFam {
 
     ref.listen(personSetProvider, (_, next) {
       if (!next.contains(id)) {
-        _keepAliveLink?.close();
+        _deleted();
       }
     });
 
     return _persons.where((person) => person.id == id).first;
   }
+
+  void _deleted() => _keepAliveLink?.close();
 }
 
 final _persons = {
