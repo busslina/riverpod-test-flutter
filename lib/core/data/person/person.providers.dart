@@ -22,7 +22,7 @@ class PersonSet extends _$PersonSet {
 
   void delete(String id) {
     llib.debug('PersonSet.delete() -- $id');
-    state.remove(id);
+    state = state.remove(id);
     ref.invalidate(personFamProvider(id));
   }
 }
