@@ -6,7 +6,7 @@ part of 'person.providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$personSetHash() => r'4da05b4a1becd3ef3dcde969fc607910c9c8d3aa';
+String _$personSetHash() => r'870738122768482f4228ab4a6e48fc48a777f8e0';
 
 /// (01) Person set
 ///
@@ -22,7 +22,7 @@ final personSetProvider = NotifierProvider<PersonSet, ISet<String>>.internal(
 );
 
 typedef _$PersonSet = Notifier<ISet<String>>;
-String _$personFamHash() => r'81f15901f4884c983dcab3b7a10c994e1fda6bc3';
+String _$personFamHash() => r'394538850ccb0f5ec1e2b3238641b24fabee0fe9';
 
 /// Copied from Dart SDK
 class _SystemHash {

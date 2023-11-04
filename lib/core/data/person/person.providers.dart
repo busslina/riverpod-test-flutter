@@ -24,8 +24,6 @@ class PersonSet extends _$PersonSet {
   void delete(String id) {
     llib.debug('PersonSet.delete() -- $id');
     state = state.remove(id);
-    // ref.invalidate(personFamProvider(id));
-    ref.read(personFamProvider(id).notifier).deleted();
   }
 }
 
@@ -43,11 +41,13 @@ class PersonFam extends _$PersonFam {
       llib.debug('PersonFam.onDispose() -- $id');
     });
 
-    return _persons.where((person) => person.id == id).first;
-  }
+    ref.listen(personSetProvider, (_, next) {
+      if (!next.contains(id)) {
+        _keepAliveLink?.close();
+      }
+    });
 
-  void deleted() {
-    _keepAliveLink?.close();
+    return _persons.where((person) => person.id == id).first;
   }
 }
 
