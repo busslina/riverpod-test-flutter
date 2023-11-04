@@ -6,7 +6,7 @@ part of 'person.providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$personSetHash() => r'fa4e84e87956057835c8b7c8c7fdf95863b09103';
+String _$personSetHash() => r'4da05b4a1becd3ef3dcde969fc607910c9c8d3aa';
 
 /// (01) Person set
 ///
@@ -22,7 +22,7 @@ final personSetProvider = NotifierProvider<PersonSet, ISet<String>>.internal(
 );
 
 typedef _$PersonSet = Notifier<ISet<String>>;
-String _$personFamHash() => r'e4b0c53ffebc0274aeee80156f6f37dc6ebb8c0b';
+String _$personFamHash() => r'81f15901f4884c983dcab3b7a10c994e1fda6bc3';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -45,7 +45,7 @@ class _SystemHash {
   }
 }
 
-abstract class _$PersonFam extends BuildlessNotifier<Person> {
+abstract class _$PersonFam extends BuildlessAutoDisposeNotifier<Person> {
   late final String id;
 
   Person build(
@@ -106,7 +106,8 @@ class PersonFamFamily extends Family<Person> {
 /// (02) Person family
 ///
 /// Copied from [PersonFam].
-class PersonFamProvider extends NotifierProviderImpl<PersonFam, Person> {
+class PersonFamProvider
+    extends AutoDisposeNotifierProviderImpl<PersonFam, Person> {
   /// (02) Person family
   ///
   /// Copied from [PersonFam].
@@ -163,7 +164,7 @@ class PersonFamProvider extends NotifierProviderImpl<PersonFam, Person> {
   }
 
   @override
-  NotifierProviderElement<PersonFam, Person> createElement() {
+  AutoDisposeNotifierProviderElement<PersonFam, Person> createElement() {
     return _PersonFamProviderElement(this);
   }
 
@@ -181,13 +182,14 @@ class PersonFamProvider extends NotifierProviderImpl<PersonFam, Person> {
   }
 }
 
-mixin PersonFamRef on NotifierProviderRef<Person> {
+mixin PersonFamRef on AutoDisposeNotifierProviderRef<Person> {
   /// The parameter `id` of this provider.
   String get id;
 }
 
 class _PersonFamProviderElement
-    extends NotifierProviderElement<PersonFam, Person> with PersonFamRef {
+    extends AutoDisposeNotifierProviderElement<PersonFam, Person>
+    with PersonFamRef {
   _PersonFamProviderElement(super.provider);
 
   @override

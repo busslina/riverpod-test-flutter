@@ -1,5 +1,6 @@
 import 'package:busslina_dart_lightweight_lib/busslina_dart_lightweight_lib.dart'
     as llib;
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_test/riverpod_test.dart';
 
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
@@ -23,22 +24,30 @@ class PersonSet extends _$PersonSet {
   void delete(String id) {
     llib.debug('PersonSet.delete() -- $id');
     state = state.remove(id);
-    ref.invalidate(personFamProvider(id));
+    // ref.invalidate(personFamProvider(id));
+    ref.read(personFamProvider(id).notifier).deleted();
   }
 }
 
 /// (02) Person family
-@Riverpod(keepAlive: true)
+@Riverpod(keepAlive: false)
 class PersonFam extends _$PersonFam {
+  KeepAliveLink? _keepAliveLink;
+
   @override
   Person build(String id) {
+    _keepAliveLink = ref.keepAlive();
     llib.debug('PersonFam.build() -- $id');
 
     ref.onDispose(() {
-      llib.debug('PersonFam.build() -- $id');
+      llib.debug('PersonFam.onDispose() -- $id');
     });
 
     return _persons.where((person) => person.id == id).first;
+  }
+
+  void deleted() {
+    _keepAliveLink?.close();
   }
 }
 
