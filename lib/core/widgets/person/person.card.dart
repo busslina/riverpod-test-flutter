@@ -1,5 +1,3 @@
-import 'package:busslina_dart_lightweight_lib/busslina_dart_lightweight_lib.dart'
-    as llib;
 import 'package:busslina_flutter_lightweight_lib/busslina_flutter_lightweight_lib.dart'
     as fllib;
 
