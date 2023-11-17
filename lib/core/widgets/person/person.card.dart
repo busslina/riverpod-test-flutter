@@ -41,6 +41,9 @@ class _PersonCardState extends ConsumerState<PersonCard> {
           color: Colors.black,
         ),
       ],
-    ).onTap(() => ref.read(personSetProvider.notifier).delete(widget.id));
+    ).onTap(
+      () => ref.read(personSetProvider.notifier).delete(widget.id),
+      onSecondaryTap: () => ref.invalidate(personFamProvider(widget.id)),
+    );
   }
 }
